@@ -3,6 +3,7 @@ package com.example.Customquery.controllers;
 import com.example.Customquery.entities.Flight;
 import com.example.Customquery.entities.FlightStatus;
 import com.example.Customquery.repositories.FlightRepository;
+import com.example.Customquery.services.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,9 @@ public class FlightController {
 
     @Autowired
     FlightRepository flightRepository;
+
+    @Autowired
+    FlightService flightService;
 
     @GetMapping("/provisoning")
     public List<Flight> provisoningFlight(){
@@ -35,6 +39,6 @@ public class FlightController {
 
     @GetMapping("/getAll")
     public List<Flight> getAll(){
-        return flightRepository.findAll();
+        return flightService.getAll();
     }
 }
